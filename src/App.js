@@ -14,13 +14,14 @@ const App = ()=> {
   const dispatch = useDispatch();
   useEffect(()=>{
     const unsubscribe = onAuthStateChangedListener((user)=> {
-      console.log('Auth state changed:', user);
+      // console.log('Auth state changed:', user);
         if (user){
           createUserDocumentFromAuth(user);
             createUserDocumentFromAuth(user);
         }
-        console.log(setCurrentUser(user)); // Logging the action creator
-       dispatch(setCurrentUser(user));
+      const pickedUser = user && (({accessToken, email}) => ({accessToken, email}))(user);
+        console.log(setCurrentUser(pickedUser)); // Logging the action creator
+       dispatch(setCurrentUser(pickedUser));
     })
     return unsubscribe
 },[]);

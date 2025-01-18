@@ -1,3 +1,4 @@
+
 // import { compose, createStore, applyMiddleware } from 'redux';
 import { configureStore } from "@reduxjs/toolkit";
 // import { persistStore, persistReducer } from 'redux-persist';
@@ -30,7 +31,11 @@ const middleWares = [process.env.NODE_ENV !=='production' && logger].filter(
 
 export const store = configureStore({
   reducer: rootReducer,
-  // middleware: middleWares,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware(
+      // {serializableCheck: false,} // to bypass the non serializable error when logging the user we can either disable the non serializable error check or just get the required values from the user object whereImpl is the class constructor
+    ).concat(middleWares),
+
 })
 
 // export const persistor = persistStore(store);
