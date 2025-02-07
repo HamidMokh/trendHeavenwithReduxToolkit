@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCartCount, selectIsCartOpen } from "../../store/cart/cart.selector";
 import { setIsCartOpen
 
- } from "../../store/cart/cart.action";
+ } from "../../store/cart/cart.reducer";
 
 import {ShoppingICon, CartIconContainer, ItemCount } from './cart-icon.styles';
 

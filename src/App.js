@@ -9,7 +9,6 @@ import Authentication from './components/Routes/authentication/authentication.co
 import Shop from './components/shop/shop.component';
 import Checkout from './components/Routes/checkout/checkout.component';
 import { setCurrentUser } from "./store/user/user.reducer";
-
 const App = ()=> {
   const dispatch = useDispatch();
   useEffect(()=>{
@@ -17,14 +16,13 @@ const App = ()=> {
       // console.log('Auth state changed:', user);
         if (user){
           createUserDocumentFromAuth(user);
-            createUserDocumentFromAuth(user);
         }
       const pickedUser = user && (({accessToken, email}) => ({accessToken, email}))(user);
         console.log(setCurrentUser(pickedUser)); // Logging the action creator
        dispatch(setCurrentUser(pickedUser));
     })
     return unsubscribe
-},[]);
+});
 
   return (
   <Routes>
